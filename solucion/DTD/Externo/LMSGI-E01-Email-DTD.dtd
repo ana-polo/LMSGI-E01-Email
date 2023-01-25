@@ -1,0 +1,89 @@
+<!--
+    Fichero: LMSGI-E01-Email-DTD.dtd
+    Funcionalidad: Ejemplo de dtd para la gestión de los mensajes de la bandeja de entrada de varias cuentas
+    de correos a través de un gestor.
+    Se consideran atributos el código de la cuenta y del email, si el email esta leido o no,la prioridad.
+
+    Autor: Ana Polo Arozamena
+    IES Alisal
+-->
+
+<!-- ********* -->
+<!-- Elementos -->
+<!-- ********* -->
+
+
+<!-- *** Nivel 1 *** -->
+
+<!ELEMENT cuenta (descripcion, email+)>
+
+    <!-- *** Nivel 2 *** -->
+
+    <!ELEMENT descripcion (#PCDATA)>
+
+    <!ELEMENT email (informacion, cabecera, mensaje)>
+
+        <!-- *** Nivel 3 *** -->
+
+        <!ELEMENT informacion (categorizar)>
+
+        <!ELEMENT cabecera (fechaHora, remitente, destinatarios, asunto?)>
+
+        <!ELEMENT mensaje (#PCDATA)>
+
+            <!-- *** Nivel 4 *** -->
+
+            <!ELEMENT categorizar (#PCDATA)>
+
+
+            <!ELEMENT fechaHora (dia, mes, anho, hora, minuto, segundo)>
+
+            <!ELEMENT remitente (nombre?, correo)>
+
+            <!ELEMENT destinatarios (destinatario+)>
+
+            <!ELEMENT asunto (#PCDATA)>
+
+                <!-- *** Nivel 5 *** -->
+
+                <!ELEMENT dia (#PCDATA)>
+                <!ELEMENT mes (#PCDATA)>
+                <!ELEMENT anho (#PCDATA)>
+                <!ELEMENT hora (#PCDATA)>
+                <!ELEMENT minuto (#PCDATA)>
+                <!ELEMENT segundo (#PCDATA)>
+
+                <!--
+                    Estos dos elementos podrían definirse aquí por ser comunes a dos niveles,
+                    al hijo del remitente y al derivado del destinatario, pero se ha preferido definirlos
+                    el último de estos niveles para que sea más claro (lineas 75 y 76).
+
+                    <!ELEMENT nombre (#PCDATA)>
+                    <!ELEMENT correo (#PCDATA)>
+                -->
+
+                <!ELEMENT destinatario (nombre?, correo, tipo)>
+
+                    <!-- *** Nivel 6 *** -->
+
+                    <!ELEMENT nombre (#PCDATA)>
+                    <!ELEMENT correo (#PCDATA)>
+                    <!ELEMENT tipo (#PCDATA)>
+
+
+    <!-- ********* -->
+    <!-- Atributos -->
+    <!-- ********* -->
+
+    <!-- Obligatorios -->
+
+    <!ATTLIST cuenta codigoCuenta CDATA #REQUIRED>
+
+    <!ATTLIST informacion codigoEmail CDATA #REQUIRED>
+
+    <!ATTLIST informacion leido (si|no) #REQUIRED>
+
+
+    <!-- Opcionales -->
+
+    <!ATTLIST email prioridad (alta|media|baja) #IMPLIED>
