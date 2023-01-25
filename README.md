@@ -1,5 +1,5 @@
 
-# LMSGI-E02-Factura
+# LMSGI-E01-Email
 
 Ejemplos de descripciones XML con DTD y XML-Schema
 
