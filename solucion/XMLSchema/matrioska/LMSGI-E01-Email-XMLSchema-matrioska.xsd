@@ -1,0 +1,84 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema" >
+
+	<xs:annotation>
+		<xs:documentation xml:lang  = "es-es" >
+			<fichero>LMSGI-E01-Email-XMLSchema-matrioska</fichero>
+			<fechaCreacion>24-01-2023</fechaCreacion>
+			<autor>Ana Polo Arozamena</autor>
+			<aplicación>
+				Ejemplo de uso de XSD diseñado por el método de matrioska.
+			</aplicación>
+			<utilidad>Vocabulario para la validación de ficheros básicos de información
+				      de los mensajes de las cuentas de correos que hay en un gestor.
+			</utilidad>
+		</xs:documentation>
+	</xs:annotation>
+
+	<!-- ************** -->
+	<!-- TIPOS DE DATOS -->
+	<!-- ************** -->
+
+	<xs:element name = "cuenta" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name = "descripcion" type = "xs:string" />
+				<xs:element name = "email" maxOccurs = "unbounded" >
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name = "informacion" >
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name = "categorizar" type = "xs:string" />
+									</xs:sequence>
+									<xs:attribute name = "codigoEmail" type = "xs:integer"
+										use = "required" />
+									<xs:attribute name = "leido" use = "required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name = "cabecera" >
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name = "fechaHora" type = "xs:dateTime" />
+
+										<xs:element name = "remitente" >
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name = "nombre" minOccurs = "0"
+														type = "xs:string" />
+													<xs:element name = "correo" type = "xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name = "destinatarios" >
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name = "destinatario"
+														maxOccurs = "unbounded" >
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name = "nombre"
+																	minOccurs = "0" type = "xs:string" />
+																<xs:element name = "correo"
+																	type = "xs:string" />
+																<xs:element name = "tipo"
+																	type = "xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name = "mensaje" type = "xs:string" />
+						</xs:sequence>
+						<xs:attribute name = "prioridad" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name = "codigoCuenta" type = "xs:integer" use = "required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-
-<!DOCTYPE cuenta SYSTEM "LMSGI-E01-Email-DTD.dtd" >
+<?xml version = "1.0" encoding = "utf-8" standalone = "no" ?>
 
 <!-- Ejemplar: cuenta -->
 
-<cuenta codigoCuenta="123" >
+<cuenta xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation = "LMSGI-E01-Email-XMLSchema-matrioska.xsd"
+		codigoCuenta = "123" >
+
 	<descripcion>micuenta@gmail.com</descripcion>
 
 	<!-- Detalle de cada email.
@@ -13,20 +14,13 @@
 		Lo mismo se puede aplicar al resto de elementos opcionales
 	-->
 
-	<email prioridad ="alta">
-		<informacion codigoEmail="222" leido ="si" >
+	<email prioridad  = "alta" >
+		<informacion codigoEmail = "222" leido  = "si" >
 			<categorizar>FAMILIA</categorizar>
 		</informacion>
 
 		<cabecera>
-			<fechaHora>
-				<dia>12</dia>
-				<mes>12</mes>
-				<anho>12</anho>
-				<hora>12</hora>
-				<minuto>12</minuto>
-				<segundo>12</segundo>
-			</fechaHora>
+			<fechaHora>2023-12-31T12:00:01</fechaHora>
 
 			<remitente>
 				<nombre>Juana Pérez</nombre>
@@ -41,9 +35,11 @@
 				</destinatario>
 
 				<destinatario>
+
 					<!-- Compruebo que el nombre es opcional no poniendole
 						<nombre>Jaime López</nombre>
 					-->
+
 					<correo>jaimito@gmail.com</correo>
 					<tipo>CC</tipo>
 				</destinatario>
@@ -54,19 +50,12 @@
 	</email>
 
 	<email>
-		<informacion codigoEmail="333" leido ="no" >
+		<informacion codigoEmail = "333" leido  = "no" >
 			<categorizar>FAMILIA</categorizar>
 		</informacion>
 
 		<cabecera>
-			<fechaHora>
-				<dia>12</dia>
-				<mes>12</mes>
-				<anho>12</anho>
-				<hora>12</hora>
-				<minuto>15</minuto>
-				<segundo>28</segundo>
-			</fechaHora>
+			<fechaHora>2023-12-31T12:00:01</fechaHora>
 
 			<remitente>
 				<correo>calamidad@gmail.com</correo>

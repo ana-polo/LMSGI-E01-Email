@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version = "1.0" encoding = "utf-8" standalone = "no" ?>
 
 <!-- ****************** -->
 <!-- Definición del DTD -->
@@ -96,7 +96,7 @@
 <!-- Definición de la instancia XML correspondiente -->
 <!-- ********************************************** -->
 
-<cuenta codigoCuenta="123" >
+<cuenta codigoCuenta = "123" >
 	<descripcion>micuenta@gmail.com</descripcion>
 
 	<!-- Detalle de cada email.
@@ -105,8 +105,8 @@
 		Lo mismo se puede aplicar al resto de elementos opcionales
 	-->
 
-	<email prioridad ="alta">
-		<informacion codigoEmail="222" leido ="si" >
+	<email prioridad  = "alta" >
+		<informacion codigoEmail = "222" leido  = "si" >
 			<categorizar>FAMILIA</categorizar>
 		</informacion>
 
@@ -146,7 +146,7 @@
 	</email>
 
 	<email>
-		<informacion codigoEmail="333" leido ="no" >
+		<informacion codigoEmail = "333" leido  = "no" >
 			<categorizar>FAMILIA</categorizar>
 		</informacion>
 
