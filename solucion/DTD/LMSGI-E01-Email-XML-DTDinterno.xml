@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+
+<!-- ****************** -->
+<!-- Definición del DTD -->
+<!-- ****************** -->
+
+<!DOCTYPE cuenta [
+
+    <!-- ********* -->
+    <!-- Elementos -->
+    <!-- ********* -->
+
+
+    <!-- *** Nivel 1 *** -->
+
+    <!ELEMENT cuenta (descripcion, email+)>
+
+        <!-- *** Nivel 2 *** -->
+
+        <!ELEMENT descripcion (#PCDATA)>
+
+        <!ELEMENT email (informacion, cabecera, mensaje)>
+
+            <!-- *** Nivel 3 *** -->
+
+            <!ELEMENT informacion (categorizar)>
+
+            <!ELEMENT cabecera (fechaHora, remitente, destinatarios, asunto?)>
+
+            <!ELEMENT mensaje (#PCDATA)>
+
+                <!-- *** Nivel 4 *** -->
+
+                <!ELEMENT categorizar (#PCDATA)>
+
+
+                <!ELEMENT fechaHora (dia, mes, anho, hora, minuto, segundo)>
+
+                <!ELEMENT remitente (nombre?, correo)>
+
+                <!ELEMENT destinatarios (destinatario+)>
+
+                <!ELEMENT asunto (#PCDATA)>
+
+                    <!-- *** Nivel 5 *** -->
+
+                    <!ELEMENT dia (#PCDATA)>
+                    <!ELEMENT mes (#PCDATA)>
+                    <!ELEMENT anho (#PCDATA)>
+                    <!ELEMENT hora (#PCDATA)>
+                    <!ELEMENT minuto (#PCDATA)>
+                    <!ELEMENT segundo (#PCDATA)>
+
+                    <!--
+                        Estos dos elementos podrían definirse aquí por ser comunes a dos niveles,
+                        al hijo del remitente y al derivado del destinatario, pero se ha preferido definirlos
+                        el último de estos niveles para que sea más claro (lineas 75 y 76).
+
+                        <!ELEMENT nombre (#PCDATA)>
+                        <!ELEMENT correo (#PCDATA)>
+                    -->
+
+                    <!ELEMENT destinatario (nombre?, correo, tipo)>
+
+                        <!-- *** Nivel 6 *** -->
+
+                        <!ELEMENT nombre (#PCDATA)>
+                        <!ELEMENT correo (#PCDATA)>
+                        <!ELEMENT tipo (#PCDATA)>
+
+
+        <!-- ********* -->
+        <!-- Atributos -->
+        <!-- ********* -->
+
+        <!-- Obligatorios -->
+
+        <!ATTLIST cuenta codigoCuenta CDATA #REQUIRED>
+
+        <!ATTLIST informacion codigoEmail CDATA #REQUIRED>
+
+        <!ATTLIST informacion leido (si|no) #REQUIRED>
+
+
+        <!-- Opcionales -->
+
+        <!ATTLIST email prioridad (alta|media|baja) #IMPLIED>
+] >
+
+<!-- ************************************ -->
+<!-- Fin de la definición del DTD interno -->
+<!-- ************************************ -->
+
+
+<!-- ********************************************** -->
+<!-- Definición de la instancia XML correspondiente -->
+<!-- ********************************************** -->
+
+<cuenta codigoCuenta="123" >
+	<descripcion>micuenta@gmail.com</descripcion>
+
+	<!-- Detalle de cada email.
+		Es conveniente es hacer al menos dos para comprobar que la validación de la cardinalidad funciona bien.
+		Para probar la opcionalidad del atributo prioridad, os recomiendo hacer un email con ese atributo y otro sin él
+		Lo mismo se puede aplicar al resto de elementos opcionales
+	-->
+
+	<email prioridad ="alta">
+		<informacion codigoEmail="222" leido ="si" >
+			<categorizar>FAMILIA</categorizar>
+		</informacion>
+
+		<cabecera>
+			<fechaHora>
+				<dia>12</dia>
+				<mes>12</mes>
+				<anho>12</anho>
+				<hora>12</hora>
+				<minuto>12</minuto>
+				<segundo>12</segundo>
+			</fechaHora>
+
+			<remitente>
+				<nombre>Juana Pérez</nombre>
+				<correo>calamidad@gmail.com</correo>
+			</remitente>
+
+			<destinatarios>
+				<destinatario>
+					<nombre>Jose López</nombre>
+					<correo>pepito@gmail.com</correo>
+					<tipo>Para</tipo>
+				</destinatario>
+
+				<destinatario>
+					<!-- Compruebo que el nombre es opcional no poniendole
+						<nombre>Jaime López</nombre>
+					-->
+					<correo>jaimito@gmail.com</correo>
+					<tipo>CC</tipo>
+				</destinatario>
+			</destinatarios>
+		</cabecera>
+
+		<mensaje>Hola, ¿qué tal?</mensaje>
+	</email>
+
+	<email>
+		<informacion codigoEmail="333" leido ="no" >
+			<categorizar>FAMILIA</categorizar>
+		</informacion>
+
+		<cabecera>
+			<fechaHora>
+				<dia>12</dia>
+				<mes>12</mes>
+				<anho>12</anho>
+				<hora>12</hora>
+				<minuto>15</minuto>
+				<segundo>28</segundo>
+			</fechaHora>
+
+			<remitente>
+				<correo>calamidad@gmail.com</correo>
+			</remitente>
+
+			<destinatarios>
+				<destinatario>
+					<nombre>Jose López</nombre>
+					<correo>pepito@gmail.com</correo>
+					<tipo>Para</tipo>
+				</destinatario>
+
+				<destinatario>
+
+					<!-- Compruebo que el nombre es opcional no poniendole
+						<nombre>Jaime López</nombre>
+					-->
+					<correo>jaimito@gmail.com</correo>
+					<tipo>CC</tipo>
+				</destinatario>
+			</destinatarios>
+		</cabecera>
+
+		<mensaje>Bien, ¿quedamos?</mensaje>
+	</email>
+
+</cuenta>
