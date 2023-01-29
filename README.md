@@ -15,7 +15,7 @@ Ejemplos de descripciones XML con DTD y XML-Schema
 
 &nbsp;
 
-<a name = "informacion-general"></a>
+<a name = "informacion-general" ></a>
 
 ## 1. Información General
 
@@ -25,7 +25,7 @@ Ejemplo de código XML y DTD para el módulo de Lenguajes de Marcas y Sistemas d
 
 &nbsp;
 
-<a name = "tecnologias"></a>
+<a name = "tecnologias" ></a>
 
 ## 2. Tecnologías
 
@@ -39,7 +39,7 @@ Ejemplo de código XML y DTD para el módulo de Lenguajes de Marcas y Sistemas d
 
 &nbsp;
 
-<a name = "definicion-del-problema"></a>
+<a name = "definicion-del-problema" ></a>
 
 ## 3. Definición del problema
 
